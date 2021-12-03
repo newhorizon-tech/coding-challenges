@@ -3,16 +3,13 @@ function printMove(a,b) {
 }
 
 function move(starting, goal) {
-  const values = [1,2,3]
-  const input = [starting,goal];
-  const intermediate = values.filter(num => !input.includes(num)); 
+  const pegs = [1,2,3];
+  const intermediate = pegs.filter(x=> (x !== starting) && (x!== goal))[0];
 
-  let result = printMove(starting,intermediate);
-  result += printMove(starting, goal);
-  result += printMove(intermediate, goal);
-
-  result = result.trim();
-  return result;
+  const moves = printMove(starting,intermediate) +
+                printMove(starting,goal) +
+                printMove(intermediate, goal);
+  return moves.trim()
 }
 
 console.log(move(1, 3))
